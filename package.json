@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -16,28 +17,55 @@
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.1"
   },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "autoprefixer": "^9.8.6",
+    "eslint": "^7.25.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "eslint-plugin-unicorn": "^25.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.5.2",
+    "postcss": "^7.0.35",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "lint:eslint": "eslint src",
+    "lint:eslint:fix": "eslint src/**/*.ts --fix",
+    "lint:eslint:staged": "eslint",
+    "lint:eslint:staged:fix": "eslint --fix",
+    "lint:stylelint": "stylelint src/**/*.less --syntax=less",
+    "lint:stylelint:fix": "stylelint src/**/*.less --syntax=less --fix",
+    "lint:stylelint:staged": "stylelint --syntax=less",
+    "lint:stylelint:staged:fix": "stylelint --syntax=less --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:eslint:staged:fix",
+      "npm run lint:eslint:staged"
+    ],
+    "*.less": [
+      "npm run lint:stylelint:staged:fix",
+      "npm run lint:stylelint:staged"
+    ]
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   }
 }
