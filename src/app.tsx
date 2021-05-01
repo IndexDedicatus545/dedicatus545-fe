@@ -11,7 +11,7 @@ const App: FC = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-          Learn React
+         Testing Pre-Commit
       </a>
     </header>
   </div>
