@@ -1,20 +1,7 @@
 import React, { FC } from 'react';
 
-const App: FC = () => (
+export const App: FC = () => (
   <div>
-    <header className="flex">
-      <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-         Testing Pre-Commit
-      </a>
-    </header>
+    Dedicatus 545 Welcome page
   </div>
 );
-
-export default App;
